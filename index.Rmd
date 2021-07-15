@@ -1,4 +1,4 @@
-Registros de datos de orquídeas en el territorio nacional.
+# Registros de datos de orquídeas en el territorio nacional.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -19,7 +19,6 @@ library(plotly)
 library(spData)
 library(tidyr)
 library(raster)
-library(rmapshaper)
 ```
 
 ## Carga de datos
@@ -73,13 +72,14 @@ orquideas_CRS$species[orquideas_CRS$species == ""] <- "Nulo"
 orquideas_CRS <- orquideas_CRS %>%
   filter(!is.na(coordinateUncertaintyInMeters) & coordinateUncertaintyInMeters <= 1000) %>% filter(species!="Nulo")
 
-cat("Cantidad de registros después de descartar los de alta incertidumbre en la ubicación: ", nrow(orquideas_CRS))
+cat("Cantidad de registros después de descartar los de alta incertidumbre en la ubicación:", nrow(orquideas_CRS))
 ```
 
 ```{r registros asp}
 areas_silvestres_CRS <- areas_silvestres_CRS %>%
   filter(descripcio!="Area Marina de Manejo" & descripcio!="Area marina protegida")
-cat("Cantidad de registros después de eliminar los registros con valor de “Area Marina de Manejo” o “Area marina protegida”  ", nrow(areas_silvestres_CRS))
+
+cat("Cantidad de registros después de eliminar los registros con valor de “Area Marina de Manejo” o “Area marina protegida”:", nrow(areas_silvestres_CRS))
 ```
 
 # Procesamiento y visualización 

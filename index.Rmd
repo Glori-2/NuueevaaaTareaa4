@@ -103,7 +103,7 @@ st_crs(registros_asp_CRS) = 4326
 
 # Paleta de colores
 colores_especies <-
-  colorNumeric(palette = "PuRd",
+  colorNumeric(palette = "Reds",
                domain = registros_asp_CRS$especies,
                na.color = "transparent")
 
